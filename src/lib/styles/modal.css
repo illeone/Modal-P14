@@ -1,0 +1,140 @@
+.popup{
+  width: 320px;
+  height: 300px;
+  background: #fff;
+  border-radius: 150px;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,-50%) scale(0.1);
+  text-align: center;
+  padding: 0 30px 30px;
+  color: #333;
+  visibility: hidden;
+  transition: transform 0.4s, top 0.4s;
+  z-index: 2;
+  box-shadow: 0px 0px 90px 160px #7377B3;
+}
+
+.open-popup{
+  visibility: visible;
+  top: 60%;
+  transform: translate(-50%,-50%) scale(1);
+}
+.popup img{
+  width: 100px;
+  margin-top: -50px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.popup h2{
+  font-size: 38px;
+  font-weight: 500;
+  margin: 30px 0 10px;
+}
+.popup button{
+  display: block;
+  margin: 0 auto; 
+  margin-top: 20px;
+}
+
+
+.button.dark {
+  background: white;  
+  --shadow: 0 2px 8px -1px rgba(21, 25, 36, 0.32);
+  --shadow-hover: 0 4px 20px -2px rgba(21, 25, 36, 0.5);
+  transition: 0.8s;
+}
+.button.dark:hover{
+  background: #9388BD;
+  transition: 0.7s;
+} 
+.button {
+  --text: #7377B3;
+  --font-size: 20px;
+  --duration: 0.5s;
+  --move-hover: -4px;
+  --shadow: 0 2px 8px -1px rgba(39, 94, 254, 0.32);
+  --shadow-hover: 0 4px 20px -2px rgba(39, 94, 254, 0.5);
+  padding: 16px 32px;
+  font-family: 'Varela Round', sans-serif;
+  font-weight:bolder;
+  line-height: var(--font-size);
+  border-radius: 24px;
+  display: block;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: var(--font-size);
+  letter-spacing: 0.5px;
+  background: var(--background);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  transform: translateY(var(--y));
+  transition: transform var(--duration) ease, box-shadow var(--duration) ease;
+  -webkit-tap-highlight-color: transparent;
+  /* -webkit-appearance: none; */
+}
+
+
+.button div {
+  display: flex;
+}
+.button div span {
+  display: block;
+  backface-visibility: hidden;
+  font-style: normal;
+}
+.button div span:nth-child(1) {
+  --d: 0.02s;
+}
+.button div span:nth-child(2) {
+  --d: 0.07s;
+}
+.button div span:nth-child(3) {
+  --d: 0.12s;
+}
+.button div span:nth-child(4) {
+  --d: 0.17s;
+}
+
+.button:hover {
+  --shadow: var(--shadow-hover);
+  --move: -4px;
+  --shadow-active: 0 3px 1px rgba(0, 0, 0, 0.2);
+  --text: white;
+}
+
+.button:hover span {
+  animation: move var(--duration) linear var(--d);
+}
+.button.smoke {
+  --move: 12px;
+  --move-y: -8px;
+  --blur: 4px;
+}
+
+.button.smoke:hover span {
+  --duration: 0.6s;
+  animation: smoke var(--duration) linear var(--d);
+}
+
+
+@keyframes smoke {
+  45%, 55% {
+    filter: blur(var(--blur));
+  }
+  50%, 50.1% {
+    opacity: 0;
+  }
+  25%, 75% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(var(--move)) translateY(var(--move-y));
+  }
+  50.1% {
+    transform: translateX(calc(var(--move) * -1));
+  }
+}

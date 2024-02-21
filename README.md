@@ -1,70 +1,69 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Fenêtre modale
 
-## Available Scripts
+Une bibliothèque React pour ajouter facilement des modales interactives à votre application. 
+Lorsque la modale s'active, elle apparaît au milieu de l'écran. 
+Cette modale est accompagnée d'un effet de transition fluide du haut vers le bas, avec un fond légèrement obscurci qui isole la modale du reste de l'interface, captant immédiatement l'attention de l'utilisateur.
 
-In the project directory, you can run:
+Le package est disponible sur npm : [@il_leone/modal-react](https://www.npmjs.com/package/@il_leone/modal-react)
 
-### `npm start`
+## Prérequis
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Pour utiliser cette bibliothèque, vous aurez besoin de :
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js (v12.0.0 ou plus récent)
+- npm (v6.0.0 ou plus récent)
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Pour ajouter cette bibliothèque à votre projet React, exécutez :
 
-### `npm run build`
+```bash
+npm install @il_leone/modal-react
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Comment l'utiliser
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Importez la Modal dans votre composant React :
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```jsx
+import React, { useState } from "react";
+import { Modal } from '@il_leone/modal-react';
+```
 
-### `npm run eject`
+### Intégrez la Modal dans votre application :
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Voici un exemple d'utilisation simple, déclenchant l'ouverture de la modale via un bouton :
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```jsx
+const App = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  return (
+    <div className="App">
+      <button onClick={toggleModal}>Ouvrir la modale</button>
+      <Modal
+        isOpen={isModalOpen}
+        btnOk
+        btnOkAction={toggleModal}
+        title="Titre de la modale"
+        description="Description de la modale"
+      />
+    </div>
+  );
+};
 
-## Learn More
+export default App;
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Propriétés
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `isOpen` (booléen) : Indique si la modale est ouverte ou fermée.
+- `btnOk` (booléen) : Affiche un bouton "OK" dans la modale.
+- `btnOkAction` (fonction) : Fonction à exécuter lorsqu'on clique sur le bouton "OK".
+- `title` (chaîne) : Titre de la modale.
+- `description` (chaîne) : Description ou contenu de la modale.
